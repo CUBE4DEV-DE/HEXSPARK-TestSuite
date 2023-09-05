@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E17C9C9F-913F-4B21-AC98-01B00902F205}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>msvc2019_64 QT64</QtInstall>
+    <QtModules>core;network;concurrent;networkauth</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>msvc2019_64 QT64</QtInstall>
+    <QtModules>core;network;concurrent;networkauth</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../../Core</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../../../Lib/Core;../../../Lib/CoreCloud</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="TTestCloud.cpp" />
+    <ClCompile Include="TTestEntity.cpp" />
+    <ClCompile Include="TTestLinq.cpp" />
+    <ClCompile Include="TTestNetwork.cpp" />
+    <ClCompile Include="TTestObject.cpp" />
+    <ClCompile Include="TTestObjectDocument.cpp" />
+    <ClCompile Include="TTestObjectList.cpp" />
+    <ClCompile Include="TTestObjectManager.cpp" />
+    <ClCompile Include="TTestProcess.cpp" />
+    <ClCompile Include="TTestStorage.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="TTestObjectManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="TTestObject.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="TTestObjectDocument.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="TTestObjectList.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="TTestEntity.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="TTestLinq.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="TTestStorage.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="TTestNetwork.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="TTestProcess.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="TTestCloud.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Lib\CoreCloud\CoreCloud\CoreCloud.vcxproj">
+      <Project>{64ee1a16-e00d-43c5-8f64-b962b0c97a26}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Lib\Core\CoreBase\CoreBase.vcxproj">
+      <Project>{eff5cebc-7e4a-49f1-be51-359392e7c7f2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Lib\Core\CoreNetwork\CoreNetwork.vcxproj">
+      <Project>{6dd53e56-2851-4079-8558-d28cf8d9aaf8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Lib\Core\CoreProcess\CoreProcess.vcxproj">
+      <Project>{60a899dc-1c75-4065-946b-17d5794cbf68}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Lib\Core\CoreStorage\CoreStorage.vcxproj">
+      <Project>{66845384-c6b0-4d5a-a9ca-968684ea538c}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
